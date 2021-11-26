@@ -7,19 +7,28 @@ import models.Game;
 import models.Player;
 import service.BoardService;
 import service.PlayerService;
+import service.moveValidators.MoveValidatorService;
 
 public class PlayerController {
     PlayerService playerService = new PlayerService();
     BoardService boardService = new BoardService();
+    MoveValidatorService moveValidatorService =
+            new MoveValidatorService();
 
-    PlayerControllerResponseDto makeMove(
+    public PlayerControllerResponseDto makeMove(
             PlayerControllerRequestDto request
     ) {
-        Player player = playerService.getPlayerFromId(request.getPlayerId())
+        Player player = playerService.getPlayerFromId(request.getPlayerId());
         Game game = playerService.getGameForPlayer(player);
         Board board = boardService.getBoardForGame(game);
-
-        return playerService.makeMove();
+        if (moveValidatorService.validateMove(
+                board,
+                request.getStartCell(),
+                request.getEndCell()
+        )) {
+            // do work;
+        }
+        return null;
     }
 }
 

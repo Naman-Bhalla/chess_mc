@@ -4,6 +4,15 @@ public class Cell extends BaseModel {
     private long id;
     private Colour colour;
     private Piece piece;
+    private PieceType pieceType;
+
+    public PieceType getPieceType() {
+        return pieceType;
+    }
+
+    public void setPieceType(PieceType pieceType) {
+        this.pieceType = pieceType;
+    }
 
     public long getId() {
         return id;

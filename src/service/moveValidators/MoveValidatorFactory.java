@@ -15,3 +15,7 @@ public class MoveValidatorFactory {
         return null;
     }
 }
+
+// SRP: Single Reposibility Principle
+// King _. it is storing properties of a king
+/// how to validate a move
