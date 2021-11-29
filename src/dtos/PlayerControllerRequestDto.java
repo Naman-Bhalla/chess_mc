@@ -5,15 +5,21 @@ import models.Cell;
 import models.Player;
 
 public class PlayerControllerRequestDto {
-    long playerId; // Player -> Game
+    Integer playerId; // Player -> Game
     Cell startCell;
     Cell endCell; // Cewll -> P{iece
 
-    public long getPlayerId() {
+    public PlayerControllerRequestDto(Integer playerId, Cell startCell, Cell endCell) {
+			this.playerId = playerId;
+			this.startCell = startCell;
+			this.endCell = endCell;
+		}
+
+		public Integer getPlayerId() {
         return playerId;
     }
 
-    public void setPlayerId(long playerId) {
+    public void setPlayerId(Integer playerId) {
         this.playerId = playerId;
     }
 

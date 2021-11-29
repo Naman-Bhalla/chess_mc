@@ -6,6 +6,12 @@ import models.Cell;
 public class KingMoveValidator implements PieceMoveValidator {
     @Override
     public boolean validateMove(Board board, Cell startCell, Cell endCell) {
-        return false;
+			boolean isValidXMoved = Math.abs(startCell.getCellX() - endCell.getCellX()) <= 1;
+			boolean isValidYMoved = Math.abs(startCell.getCellX() - endCell.getCellX()) <= 1;
+			boolean isStationary = startCell == endCell;
+
+			if(isValidXMoved && isValidYMoved && !isStationary)
+				return true;
+			return false;
     }
 }

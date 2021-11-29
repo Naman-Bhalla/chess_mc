@@ -4,6 +4,7 @@ import dtos.PlayerControllerRequestDto;
 import dtos.PlayerControllerResponseDto;
 import models.Board;
 import models.Game;
+import models.GameStatus;
 import models.Player;
 import service.BoardService;
 import service.PlayerService;
@@ -26,9 +27,19 @@ public class PlayerController {
                 request.getStartCell(),
                 request.getEndCell()
         )) {
-            // do work;
+            // doesn't include attacks to opponent players
+						// only move feature implemented, same player keeps moving for now
+						String message = player.getColour() + " moves " + request.getStartCell().toString() + " to " + request.getEndCell().toString();
+						board.movePiece(request.getStartCell(), request.getEndCell());
+						System.out.println("\n\n");
+						System.out.println("new board : ");
+						board.printBoard();
+						return new PlayerControllerResponseDto(message, board, GameStatus.ACTIVE, player);
         }
-        return null;
+				System.out.println("\n\n");
+				System.out.println("new board : \n");
+				board.printBoard();
+        return new PlayerControllerResponseDto("Invalid move", board, GameStatus.ACTIVE, player);
     }
 }
 
