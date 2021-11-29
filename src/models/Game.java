@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Game extends BaseModel {
     private List<Player> players;
+		private Board board;
     private GameStatus status;
     private Date startTime;
 
@@ -31,4 +32,12 @@ public class Game extends BaseModel {
     public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
+
+		public Board getBoard() {
+			return board;
+		}
+
+		public void setBoard(Board board) {
+			this.board = board;
+		}
 }

@@ -1,25 +1,18 @@
 package models;
 
 public class Cell extends BaseModel {
-    private long id;
     private Colour colour;
     private Piece piece;
-    private PieceType pieceType;
+		private long cellX;
+		private long cellY;
 
-    public PieceType getPieceType() {
-        return pieceType;
-    }
 
-    public void setPieceType(PieceType pieceType) {
-        this.pieceType = pieceType;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
+    public Cell(Colour colour, Piece piece, long cellX, long cellY) {
+				super();
+        this.colour = colour;
+        this.piece = piece;
+				this.cellX = cellX;
+				this.cellY = cellY;
     }
 
     public Colour getColour() {
@@ -37,6 +30,32 @@ public class Cell extends BaseModel {
     public void setPiece(Piece piece) {
         this.piece = piece;
     }
+
+		public long getCellX() {
+			return cellX;
+		}
+
+		public String getCellChessCoordinates() {
+			return "" + (char)((int)'A' + this.getCellX()) + (int)(this.getCellY()+1);
+		}
+
+		public void setCellX(long cellX) {
+			this.cellX = cellX;
+		}
+
+		public long getCellY() {
+			return cellY;
+		}
+
+		public void setCellY(long cellY) {
+			this.cellY = cellY;
+		}
+
+		public String toString() {
+			String pieceName = piece.getColour().toString()+ " " + piece.getPieceType().toString() + " ";
+			if(piece.getPieceType() == PieceType.UNKNOWN) pieceName = "";
+			return pieceName + this.getCellChessCoordinates();
+		}
 
 }
 

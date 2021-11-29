@@ -12,9 +12,8 @@ public class MoveValidatorService {
                          Cell endCell) {
         PieceMoveValidator validator =
                 moveValidatorFactory.getValidatorForPieceType(
-                        startCell.getPieceType()
+                        startCell.getPiece()
                 );
-
         return validator.validateMove(board, startCell, endCell);
     }
 }
